@@ -1,7 +1,7 @@
 /*
  * Group: Fashionably Late
  * ------------------------------------------------------------
- * Version 1.0.0-2:
+ * Version 1.0.0-3:
  * ------------------------------------------------------------
  * Main Class to carry out testing of methods within banking package.
  * 
@@ -18,7 +18,6 @@
  * import <package name>.<class>;
  * --------------------------
  * 
- * 
  * Please update the comment section below this with additions:
  * ------------------------------------------------------------
  * ADDITIONS:
@@ -27,10 +26,12 @@
  * --Imported package 'banking' classes
  * --Created JUnit 4 for testing
  * --Added Suppressed Warnings for unused imports
+ * --Added Test Case for Bank.getNAME();
  * 
  * ------------------------------------------------------------
  * TO-DO:
  * --Create a dataset (Map?) with testable data to use when testing methods of the banking package
+ * --Test each method below accordingly
  * 
  * ------------------------------------------------------------
  * 
@@ -42,7 +43,7 @@
  * Account.getAccountId();
  * 
  * ---BANK CLASS---
- * Bank.getNAME();
+ * Bank.getNAME(); Test done by: - Michael Tarallo
  * Bank.getAllAccounts();
  * Bank.addCustomer();
  * Bank.removeCustomer();
@@ -69,11 +70,32 @@
 
 package testing;
 
+import org.junit.*;
 import banking.*;
 
 //Comments regarding project at top of class
 
-@SuppressWarnings("unused")
 public class DBTest {
+
+	/*
+	 * Sets a bank name -> gets the bank name -> displays the bank name if
+	 * condition is TRUE.
+	 */
+	@Test
+	public void getBankName() {
+
+		// Gives the following of type
+		String newBank = "New Bank Name";
+
+		// Creates an instance
+		Bank bankName = new Bank(newBank);
+
+		// Sets a requirement
+		Assert.assertTrue(bankName.getNAME() == newBank);
+
+		// Displays output (Optional Debugging Purposes)
+		System.out.println(newBank);
+
+	}
 
 }
