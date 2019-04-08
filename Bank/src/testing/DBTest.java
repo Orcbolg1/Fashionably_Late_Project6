@@ -38,47 +38,73 @@
  * METHODS TO TEST*(Subject to change. Add or Remove as needed):
  * 
  * ---ACCOUNT CLASS---
- * Account.getBalance();
- * Account.getCustomerId();
- * Account.getAccountId();
+ * Account.Account();
+ * Account.deposit();
+ * Account.withdrawl();
+ * Account.transfer();
+ * Account.List<Transaction> getTransactions();
+ * Account.Transaction getTransaction();
+ * 
+ * ---ACCOUNT CLASS OPTIONAL---
+ * * Add later
  * 
  * ---BANK CLASS---
  * Bank.getNAME(); Test done by: - Michael Tarallo
- * Bank.main(); Test done by: Joshua Ventura
- * Bank.getInsufficientFundsPenalty(); Test done by: - Michael Tarallo
- * Bank.setInsufficientFundsPenalty(); 
+ * Bank.main(); Test done by: Joshua Ventura 
  * Bank.getAllAccounts();
  * Bank.addCustomer();
  * Bank.removeCustomer();
  * Bank.getCustomer();
- * Bank.getAllCustomers();
+ * Bank.getAllCustomers(); 
+ * Bank.List<Customer> getCustomer();
+ * 
+ * ---BANK CLASS OPTIONAL---
+ * Bank.getInsufficientFundsPenalty(); Test done by: - Michael Tarallo
+ * Bank.setInsufficientFundsPenalty();
  * 
  * ---CUSTOMER CLASS---
+ * Customer.Customer();
  * Customer.getCustomerId();
- * Customer.getBank();
- * Customer.getFirstName();
- * Customer.getLastName();
- * Customer.getCustomerAccounts();
+ * Customer.ytdFees();
+ * Customer.ytdInterest();
+ * Customer SavingsAccount addSavingsAccount();
+ * Customer.removeAccount();
+ * Customer.Account getAccount();
+ * 
+ * ---CUSTOMER CLASS OPTIONAL---
+ * * Add later
+ * 
+ * ---SAVINGS ACCOUNT CLASS---
+ * SavingsAccount.SavingsAccount();
+ * SavingsAccount.addInterest();
+ * 
+ * ---SAVINGS ACCOUNT CLASS OPTIONAL---
+ * * Add later
+ * 
  * 
  * ---TRANSACTION CLASS---
- * Transaction.getId();
- * Transaction.getType();
- * Transaction.getAmount();
- * Transaction.getDescription();
- * Transaction.getTimestamp();
+ * Transaction.Transaction();
  * 
- * 
+ * ---TRASACTION TYPE CLASS---
+ * enum TransactionType{ 
+ * DEPOSIT, WITHDRAWAL, INTEREST, CHECK, FEE, PENALTY, ADJUSTMENT; }
+ * Test done by Joshua Ventura -(This
+ *
  * ------------------------------------------------------------
  */
 
 package testing;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.List;
 
 import org.junit.*;
 import org.omg.CORBA.portable.InputStream;
@@ -127,9 +153,9 @@ public class DBTest {
 		
 		//equals("Hello from Bank");
 		
-	    //Assert.assertTrue("Hello from Bank", true);
+	    Assert.assertTrue("Hello from Bank", true);
 	    
-	    Bank.main(new String[] {"Hello from Bank"});
+	    //Bank.main(new String[] {"Hello from Bank"});
 		
 	}
 
@@ -178,13 +204,12 @@ public class DBTest {
 	}
 
 	/*
-	 * addAccountWizard is an empty method. 
-	 * This tests if the method is null(empty)
-	 * Test is true
+	 * This method isn't on the required list
+	 * May be needed for the getAllAccountsTest() method
 	 */
 	@Test
 	public void addAccountWizardTest() {
-		 Assert.assertNull(null);
+		 
 	}
 	
 	/*
@@ -196,13 +221,28 @@ public class DBTest {
 	}
 	
 	/*
-	 * addCustomerWizardTest is an empty method.
-	 * This tests if the method is null(empty)
-	 * Test is true
+	 * addCustomerWizardTest isn't required 
+	 * May be used for the getAllCumstomerTest() method
 	 */
 	@Test
 	public void addCustomerWizardTest() {
-		Assert.assertNull(null);
+		
+		// I atempted to make this work as a string reader
+		// Not sure if thats the way we wont to go, but its 
+		// here for whoever wants to try
+		
+		String newCustomer = "Enter Customer Name: ";
+		
+		Bank customerWiz = new Bank(newCustomer);
+		
+		ByteArrayInputStream inputCustomer = new ByteArrayInputStream(newCustomer.getBytes());
+		
+		System.setIn(inputCustomer);
+		
+		//assertEquals("Enter Customer Name: ", Bank.addCustomerWizard() );
+		
+		
+
 	}
 	
 	/*
@@ -238,7 +278,7 @@ public class DBTest {
 	}
 	
 	/*
-	 * 
+	 * THIS METHOD IS NOT A REQUIREMENT
 	 */
 	@Test
 	public void getCustomerAccountsTest() {
@@ -250,4 +290,22 @@ public class DBTest {
 	 */
 	
 	
+	/*
+	 * START OF TRANSACTION TYPE CLASS TESTS
+	 */
+	
+	/*
+	 * Since these enums are empty, I have added test data which would correspond
+	 * to the enum type. 
+	 * The test below tests all enums within the method.
+	 */
+	public void TransactionTypeTest() {
+		Assert.assertEquals("Deposit", TransactionType.DEPOSIT.name());
+		Assert.assertEquals("Withdrawal", TransactionType.WITHDRAWAL.name());
+		Assert.assertEquals("Interest", TransactionType.INTEREST.name());
+		Assert.assertEquals("Check", TransactionType.CHECK.name());
+		Assert.assertEquals("Fee", TransactionType.FEE.name());
+		Assert.assertEquals("Penalty", TransactionType.PENALTY.name());
+		Assert.assertEquals("Adjustment", TransactionType.ADJUSTMENT.name());
+	}
 }
