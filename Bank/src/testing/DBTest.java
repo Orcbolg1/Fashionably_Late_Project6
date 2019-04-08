@@ -88,7 +88,7 @@
  * ---TRASACTION TYPE CLASS---
  * enum TransactionType{ 
  * DEPOSIT, WITHDRAWAL, INTEREST, CHECK, FEE, PENALTY, ADJUSTMENT; }
- * Test done by Joshua Ventura -(This
+ * Test done by Joshua Ventura 
  *
  * ------------------------------------------------------------
  */
@@ -299,6 +299,7 @@ public class DBTest {
 	 * to the enum type. 
 	 * The test below tests all enums within the method.
 	 */
+	@Test
 	public void TransactionTypeTest() {
 		Assert.assertEquals("Deposit", TransactionType.DEPOSIT.name());
 		Assert.assertEquals("Withdrawal", TransactionType.WITHDRAWAL.name());
