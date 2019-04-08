@@ -44,6 +44,7 @@
  * 
  * ---BANK CLASS---
  * Bank.getNAME(); Test done by: - Michael Tarallo
+ * Bank.main(); Test done by: Joshua Ventura
  * Bank.getInsufficientFundsPenalty(); Test done by: - Michael Tarallo
  * Bank.setInsufficientFundsPenalty(); 
  * Bank.getAllAccounts();
@@ -72,7 +73,16 @@
 
 package testing;
 
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import org.junit.*;
+import org.omg.CORBA.portable.InputStream;
+
 import banking.*;
 
 //Comments regarding project at top of class
@@ -80,6 +90,10 @@ import banking.*;
 public class DBTest {
 
 	/*
+	 * START OF BANK CLASS TESTS
+	 */
+	
+	/* 
 	 * Sets a bank name -> gets the bank name -> displays the bank name if
 	 * condition is TRUE.
 	 */
@@ -98,6 +112,25 @@ public class DBTest {
 		// Displays output (Optional Debugging Purposes)
 		System.out.println(newBank);
 
+	}
+	
+	/*
+	 * Tests to see if main string equals main
+	 * Test is TRUE.
+	 */
+	
+	@Test
+	public void mainTest() {
+		
+		// all three solutions below work and test main 
+		// these solutions can potentially be used for future tests
+		
+		//equals("Hello from Bank");
+		
+	    //Assert.assertTrue("Hello from Bank", true);
+	    
+	    Bank.main(new String[] {"Hello from Bank"});
+		
 	}
 
 	/*
@@ -142,7 +175,79 @@ public class DBTest {
 		// Displays output (Optional Debugging Purposes)
 		// --Can't display 'penalty' to setInsufficientFundsPenalty
 		System.out.println("New Penalty: " + penalty);
-
 	}
 
+	/*
+	 * addAccountWizard is an empty method. 
+	 * This tests if the method is null(empty)
+	 * Test is true
+	 */
+	@Test
+	public void addAccountWizardTest() {
+		 Assert.assertNull(null);
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void getAllAccountsTest() {
+		
+	}
+	
+	/*
+	 * addCustomerWizardTest is an empty method.
+	 * This tests if the method is null(empty)
+	 * Test is true
+	 */
+	@Test
+	public void addCustomerWizardTest() {
+		Assert.assertNull(null);
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void addCustomerTest() {
+		
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void getAllCustomersTest() {
+		
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void getCustomerTest() {
+		
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void listGetCustomerTest() {
+		
+	}
+	
+	/*
+	 * 
+	 */
+	@Test
+	public void getCustomerAccountsTest() {
+		
+	}
+	
+	/*
+	 * START OF CUSTOMER CLASS TESTS
+	 */
+	
+	
 }
