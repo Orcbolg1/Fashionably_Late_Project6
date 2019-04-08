@@ -1,7 +1,7 @@
 /*
  * Group: Fashionably Late
  * ------------------------------------------------------------
- * Version 1.0.0-3:
+ * Version 1.0.0-4:
  * ------------------------------------------------------------
  * Main Class to carry out testing of methods within banking package.
  * 
@@ -21,7 +21,7 @@
  * Please update the comment section below this with additions:
  * ------------------------------------------------------------
  * ADDITIONS:
- * --Imported Skeletion Classes given for project
+ * --Imported Skeleton Classes given for project
  * --Created 'DBTest' class
  * --Imported package 'banking' classes
  * --Created JUnit 4 for testing
@@ -44,6 +44,8 @@
  * 
  * ---BANK CLASS---
  * Bank.getNAME(); Test done by: - Michael Tarallo
+ * Bank.getInsufficientFundsPenalty(); Test done by: - Michael Tarallo
+ * Bank.setInsufficientFundsPenalty(); 
  * Bank.getAllAccounts();
  * Bank.addCustomer();
  * Bank.removeCustomer();
@@ -95,6 +97,51 @@ public class DBTest {
 
 		// Displays output (Optional Debugging Purposes)
 		System.out.println(newBank);
+
+	}
+
+	/*
+	 * Gets default Funds -> If default funds are equal to the default value ->
+	 * Test is TRUE
+	 */
+	@Test
+	public void getInsufficientFundsTest() {
+
+		// Gives the following of type
+		String insufficientFunds = "Insufficiant Funds ";
+
+		// Creates an instance
+		Bank insuffFunds = new Bank(insufficientFunds);
+
+		// Sets a requirement
+		Assert.assertTrue(insuffFunds.getInsufficientFundsPenalty() == 10);
+
+		// Displays output (Optional Debugging Purposes)
+		System.out.println(insuffFunds.getInsufficientFundsPenalty());
+	}
+
+	/*
+	 * Sets a penalty value -> Applies penalty value to
+	 * setInsufficientFundsPenalty -> Displays new penalty
+	 * 
+	 * 
+	 * (NOTE: I don't believe this is implemented correctly. Having issues
+	 * setting with the method returning void. Should this be tested?)
+	 */
+	@Test
+	public void setInsufficientFundsTest() {
+		// Gives the following of type
+		double penalty = 20;
+
+		// Creates an instance
+		Bank newPenalty = new Bank(Double.toString(penalty));
+
+		// Sets fund penalty
+		newPenalty.setInsufficientFundsPenalty(penalty);
+
+		// Displays output (Optional Debugging Purposes)
+		// --Can't display 'penalty' to setInsufficientFundsPenalty
+		System.out.println("New Penalty: " + penalty);
 
 	}
 
