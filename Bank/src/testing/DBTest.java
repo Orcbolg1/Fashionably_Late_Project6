@@ -36,8 +36,8 @@
  * --Test each method below accordingly
  * 
  * ------------------------------------------------------------
- * 
  * METHODS TO TEST*(Subject to change. Add or Remove as needed):
+ * ------------------------------------------------------------
  * 
  * ---ACCOUNT CLASS---
  * Account.Account();
@@ -54,7 +54,7 @@
  * Bank.getNAME(); Test done by: - Michael Tarallo
  * Bank.main(); Test done by: Joshua Ventura 
  * Bank.getAllAccounts();
- * Bank.addCustomer(); Test done by: Andres Cardenas
+ * Bank.addCustomer(); Test done by: Andres Cardenas || Overhauled by: Michael Tarallo
  * Bank.removeCustomer();
  * Bank.getCustomer();
  * Bank.getAllCustomers(); 
@@ -88,9 +88,8 @@
  * Transaction.Transaction();
  * 
  * ---TRASACTION TYPE CLASS---
- * enum TransactionType{ 
- * DEPOSIT, WITHDRAWAL, INTEREST, CHECK, FEE, PENALTY, ADJUSTMENT; }
- * Test done by Joshua Ventura 
+ * TransactionType; Test done by:- Joshua Ventura 
+ * 
  *
  * ------------------------------------------------------------
  */
@@ -98,7 +97,9 @@
 package testing;
 
 import java.io.ByteArrayInputStream;
+
 import org.junit.*;
+
 import banking.*;
 
 //Comments regarding project at top of class
@@ -126,7 +127,7 @@ public class DBTest {
 		Assert.assertFalse(bankName.getNAME().equals(newBank));
 
 		// Displays output (Optional Debugging Purposes)
-		System.out.println(newBank);
+		System.out.println("Get Bank Name Test [FALSE]: " + newBank);
 
 	}
 
@@ -210,24 +211,31 @@ public class DBTest {
 	}
 
 	/*
-	 * [Needs Explaination] !!--This needs to return a customer ID--!! --Added
-	 * .equals for more concise syntax
+	 * [Needs Explaination] --Added.equals for more concise syntax
 	 */
 	@Test
 	public void addCustomerTest() {
 
-		String lastNameVar = "FakeLastName";
+		// Given
+		String lastName = "LastName";
+		String firstName = "FirstName";
+		String custID = "123";
 
-		String firstNameVar = "FakeFirstName";
+		// Setting
+		String getCustName = (lastName + firstName);
+		String getCustID = (custID);
 
-		String testTrue = lastNameVar + " " + firstNameVar;
+		String customerInfo = (getCustName + getCustID);
 
-		Bank addCustomerObj = new Bank(testTrue);
+		// Create Object
+		Bank addCustomerName = new Bank(getCustName);
 
-		Assert.assertTrue(addCustomerObj.addCustomer(lastNameVar, firstNameVar)
-				.equals(testTrue));
+		// Test Requirement
+		Assert.assertTrue(addCustomerName.addCustomer(getCustName, getCustID)
+				.equals(customerInfo));
 
-		System.out.println(testTrue);
+		System.out.println("Add Customer Test [FALSE]: " + customerInfo);
+
 	}
 
 	/*
