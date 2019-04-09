@@ -221,20 +221,30 @@ public class DBTest {
 		String firstName = "FirstName";
 		String custID = "123";
 
+		
+		
+		/*I believe this section is not required. 
+		 * 
+		 * 
 		// Setting
 		String getCustName = (lastName + firstName);
 		String getCustID = (custID);
 
 		String customerInfo = (getCustName + getCustID);
+		*/
+		
+		
+		
 
 		// Create Object
-		Bank addCustomerName = new Bank(getCustName);
+		Bank addCustomerName = new Bank(custID);
+				
 
 		// Test Requirement
-		Assert.assertTrue(addCustomerName.addCustomer(getCustName, getCustID)
-				.equals(customerInfo));
+		Assert.assertTrue(addCustomerName.addCustomer(lastName, firstName)
+				.equals(custID));
 
-		System.out.println("Add Customer Test [FALSE]: " + customerInfo);
+		System.out.println("Add Customer Test [FALSE]: " + custID);
 
 	}
 
@@ -247,10 +257,19 @@ public class DBTest {
 	}
 
 	/*
-	 * 
+	 * tests that the getCustID variable equals the 
+	 * client object returned by the method
 	 */
 	@Test
 	public void getCustomerTest() {
+		
+		String getCustID = "12345";
+		
+		Bank getCustObj = new Bank(getCustID);
+		
+		Object testResult = getCustObj.getCustomer(getCustID);
+		
+		Assert.assertEquals(testResult, getCustID);
 
 	}
 
