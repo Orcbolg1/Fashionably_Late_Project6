@@ -57,7 +57,7 @@
  * Bank.getCustomer();
  * Bank.getAllCustomers(); 
  * Bank.List<Customer> getCustomer();
- * Bank.Bank(); Test being done by Andres Cardenas
+ * Bank.Bank(); Test being done by Andres Cardenas (this test might not be necesary)
  * 
  * ---BANK CLASS OPTIONAL---
  * Bank.getInsufficientFundsPenalty(); Test done by: - Michael Tarallo
