@@ -52,11 +52,12 @@
  * Bank.getNAME(); Test done by: - Michael Tarallo
  * Bank.main(); Test done by: Joshua Ventura 
  * Bank.getAllAccounts();
- * Bank.addCustomer();
+ * Bank.addCustomer(); Test done by: Andres Cardenas
  * Bank.removeCustomer();
  * Bank.getCustomer();
  * Bank.getAllCustomers(); 
  * Bank.List<Customer> getCustomer();
+ * Bank.Bank(); Test being done by Andres Cardenas
  * 
  * ---BANK CLASS OPTIONAL---
  * Bank.getInsufficientFundsPenalty(); Test done by: - Michael Tarallo
@@ -118,6 +119,26 @@ public class DBTest {
 	/*
 	 * START OF BANK CLASS TESTS
 	 */
+	
+	
+	
+	
+	//This testing method is a work in progress. 
+	@Test
+	public void BankTester() {
+		
+		String bankName = "Fake Bank";
+		
+		Bank bankBankObj = new Bank(bankName);
+		
+		Assert.assertTrue(bankBankObj.Bank() == bankName);
+		
+	}
+	
+	
+	
+	
+	
 	
 	/* 
 	 * Sets a bank name -> gets the bank name -> displays the bank name if
@@ -251,6 +272,17 @@ public class DBTest {
 	@Test
 	public void addCustomerTest() {
 		
+		String lastNameVar = "FakeLastName";
+		
+		String firstNameVar = "FaveFirstName";
+		
+		String testTrue = lastNameVar + " " + firstNameVar;
+		
+		Bank addCustomerObj = new Bank(testTrue);
+		
+		Assert.assertTrue(addCustomerObj.addCustomer(lastNameVar, firstNameVar) == testTrue);
+		
+		System.out.println(testTrue);
 	}
 	
 	/*
