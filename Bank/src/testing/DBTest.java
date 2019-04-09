@@ -300,10 +300,28 @@ public class DBTest {
 	}
 
 	/*
-	 * 
+	 * Need assistance on List - Peter 4/9/19
 	 */
 	@Test
 	public void listGetCustomerTest() {
+		Object[] getCustomerId;
+		// Initialize variable
+		String CustomerList = null;
+		
+		// Create object list
+		Bank getCustomers = new Bank(CustomerList);
+		
+		//Adding customers to list
+		Customer customer1 = new Customer("LastName","FirstName", "1");
+        Customer customer2 = new Customer("LastName","FirstName", "2");
+        Customer customer3 = new Customer("LastName","FirstName", "3");
+        getCustomers.add(customer1);
+        getCustomers.add(customer2);
+        getCustomers.add(customer3);
+        
+        //Test
+        Assert.assertEquals(null, null, getCustomerId);
+
 
 	}
 
