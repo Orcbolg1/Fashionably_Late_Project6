@@ -176,8 +176,15 @@ public class DBTest {
 	 * getAllAccountsTest() method
 	 */
 	@Test
-	public void addAccountWizardTest() {
-
+	public void addAccountWizardTest(String newAccount) {
+			String AccountId = "Enter Account ID: ";
+			
+			Bank accountWiz = new Bank(newAccount);
+			
+			ByteArrayInputStream inputAccount = new ByteArrayInputStream(
+					newAccount.getBytes());
+			
+			System.setIn(inputAccount);
 	}
 
 	/*
