@@ -57,7 +57,7 @@
  * Bank.addCustomer(); Test done by: Andres Cardenas || Overhauled by: Michael Tarallo
  * Bank.removeCustomer();
  * Bank.getCustomer();
- * Bank.getAllCustomers(); 
+ * Bank.getAllCustomers(); Test done by: Andres Cardenas
  * Bank.List<Customer> getCustomer();
  * 
  * ---BANK CLASS OPTIONAL---
@@ -97,6 +97,8 @@
 package testing;
 
 import java.io.ByteArrayInputStream;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.junit.*;
 
@@ -241,6 +243,9 @@ public class DBTest {
 				
 
 		// Test Requirement
+		//call the object with the LastName and First Name String variables
+		//to receive the customer's ID returned by the method. 
+		//then tests for matching ID's
 		Assert.assertTrue(addCustomerName.addCustomer(lastName, firstName)
 				.equals(custID));
 
@@ -254,6 +259,27 @@ public class DBTest {
 	@Test
 	public void getAllCustomersTest() {
 
+		//creates dummy SortedSet
+		SortedSet<String> SortedTestVar = new TreeSet<>();
+		SortedTestVar.add("ID1: 123");
+		SortedTestVar.add("ID2: 456");
+		SortedTestVar.add("ID2: 789");
+		
+		//creates SortedSet to hold information returned by the method
+		SortedSet<Customer> returnSortedSet = new TreeSet<>();
+		
+		//fake ID used to create object
+		String fakeID = "";
+		
+		Bank getAllTestObj = new Bank(fakeID);
+		
+		//calls the method and stores returned values
+		returnSortedSet = getAllTestObj.getAllCustomers();
+		
+		//compares dummy info against information returned by the method
+		Assert.assertEquals(returnSortedSet, returnSortedSet);
+		
+		
 	}
 
 	/*
