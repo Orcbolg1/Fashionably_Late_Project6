@@ -1,7 +1,7 @@
 /*
  * Group: Fashionably Late
  * ------------------------------------------------------------
- * Version 1.0.0-4:
+ * Version 1.0.0-25:
  * ------------------------------------------------------------
  * Main Class to carry out testing of methods within banking package.
  * 
@@ -40,10 +40,10 @@
  * ------------------------------------------------------------
  * 
  * ---ACCOUNT CLASS---
- * Account.Account();
+ * Account.Account(); Test done by:- Joshua Ventura & Michael Tarallo
  * Account.deposit();
  * Account.withdrawl();
- * Account.transfer();
+ * Account.transfer(); Test started by:- Joshua Ventura & Michael Tarallo
  * Account.List<Transaction> getTransactions();
  * Account.Transaction getTransaction();
  * 
@@ -54,7 +54,7 @@
  * Bank.getNAME(); Test done by: - Michael Tarallo
  * Bank.main(); Test done by: Joshua Ventura 
  * Bank.getAllAccounts();
- * Bank.addCustomer(); Test done by: Andres Cardenas || Overhauled by: Michael Tarallo
+ * Bank.addCustomer(); Test done by: Andres Cardenas
  * Bank.removeCustomer();
  * Bank.getCustomer();
  * Bank.getAllCustomers(); Test done by: Andres Cardenas
@@ -105,6 +105,9 @@
 package testing;
 
 import java.io.ByteArrayInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -114,70 +117,132 @@ import banking.*;
 
 //Comments regarding project at top of class
 
-public class DBTest {
+public class DBTest extends Account {
+	static String accDesc;
+	static double initBal;
+	static Customer cust;
+
+	public DBTest() {
+		super(cust, initBal, accDesc);
+
+	}
 
 	/*
 	 * START OF ACCOUNT CLASS TESTS
 	 */
-	
+
 	/*
-	 * Account()
-	 * check for customer specific ID
-	 * check for current balance
-	 * produce a description of what's in ID and current balance
+	 * Finding customerID + accountID, Create string of Account Description ->
+	 * Sets Account Description -> gets account description -> IF GET
+	 * Description EQUALS Created String then [TRUE]
 	 */
+	@Test
 	public void accountTest() {
-		
+
+		// Unnecessary but pretty
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		System.out.println(dateFormat.format(date));
+
+		// Given
+		String customerID = "CustID-420";
+		String accountID = "AccountID-123";
+		String localDateTime = dateFormat.format(date);
+		double currentBal = 0.00;
+		String newDescription = "New Account Description";
+
+		// DEBUGGER: Shows customer information
+		System.out.println(customerID + " | " + accountID + " | "
+				+ localDateTime + " | " + "Balance: " + currentBal);
+		System.out.println(newDescription);
+
+		// Creating objects
+		DBTest customerId = new DBTest();
+		DBTest accountId = new DBTest();
+		DBTest localDT = new DBTest();
+		DBTest currentBalance = new DBTest();
+		DBTest acc = new DBTest();
+
+		// Requirements
+		Assert.assertTrue(customerId.equals(customerID));
+
+		Assert.assertTrue(accountId.getAccountId().equals(accountID));
+
+		Assert.assertTrue(localDT.getAccountCreationDate()
+				.equals(localDateTime));
+
+		Assert.assertTrue(currentBalance.getBalance() == (currentBal));
+
+		Assert.assertTrue(acc.getAccountDescription().equals(newDescription));
+
 	}
-	
+
 	/*
-	 * abstract void deposit (double amount)
-	 * amount The amount to deposit
+	 * abstract void deposit (double amount) amount The amount to deposit
 	 */
 	public void depositTest() {
-		
+
 	}
-	
+
 	/*
-	 * abstract void withdrawal (double amount)
-	 * what amount is being withdrawn 
+	 * abstract void withdrawal (double amount) what amount is being withdrawn
 	 * if there isn't enough throw something back
 	 */
 	public void withdrawalTest() {
-		
+
 	}
-	
+
 	/*
-	 * static void transfer (Account fromAccount, Account toAccount,
-	 * 	double amount)
-	 * how much is about to be transfered
-	 * for two Account IDs 
-	 * check if money has been transfered (you can check to see if balances have changed)
+	 * static void transfer (Account fromAccount, Account toAccount, double
+	 * amount) how much is about to be transfered for two Account IDs check if
+	 * money has been transfered (you can check to see if balances have changed)
 	 */
-	
+
+	@Test
 	public void transferTest() {
-		
+		// Account Inbound - String
+		// Account Outbound - String
+		// Amount Transferred - Double
+
+		// Given
+		String accountOUT = "420";
+		String accountIN = "123";
+
+		double transferred = 1000000;
+		double x = 0.0;
+
+		// Creating objects
+		DBTest accOUT = new DBTest();
+		DBTest accIN = new DBTest();
+		// DBTest amount1 = new DBTest();
+
+		Assert.assertTrue(accOUT.customer.getCustomerAccounts().equals(
+				accountOUT));
+		Assert.assertTrue(accIN.customer.getCustomerAccounts()
+				.equals(accountIN));
+
+		// Assert.assertTrue(amount1.withdraw()==(transferred));
+		// Assert.assertTrue(amount1.deposit()==(transferred));
+
 	}
-	
+
 	/*
-	 * List<Transaction> getTransactions
-	 * test to see if the list contains any transaction
-	 * test to see if items are added to the list
+	 * List<Transaction> getTransactions test to see if the list contains any
+	 * transaction test to see if items are added to the list
 	 */
 	public void getTransactionsTest() {
-		
+
 	}
-	
+
 	/*
-	 * Transaction getTransaction (int transactionId)
-	 * check to see if transaction exists
-	 * 
+	 * Transaction getTransaction (int transactionId) check to see if
+	 * transaction exists
 	 */
-	
+
 	public void TransactiongetTransaction() {
-		
+
 	}
-	
+
 	/*
 	 * START OF BANK CLASS TESTS
 	 */
@@ -192,11 +257,11 @@ public class DBTest {
 		// Gives the following of type
 		String newBank = "New Bank Name";
 
-		// Creates an instance
+		// Creates an object
 		Bank bankName = new Bank(newBank);
 
 		// Sets a requirement
-		Assert.assertFalse(bankName.getNAME().equals(newBank));
+		Assert.assertTrue(bankName.getNAME().equals(newBank));
 
 		// Displays output (Optional Debugging Purposes)
 		System.out.println("Get Bank Name Test [FALSE]: " + newBank);
@@ -210,14 +275,7 @@ public class DBTest {
 	@Test
 	public void mainTest() {
 
-		// all three solutions below work and test main
-		// these solutions can potentially be used for future tests
-
-		// equals("Hello from Bank");
-
 		Assert.assertTrue("Hello from Bank", true);
-
-		// Bank.main(new String[] {"Hello from Bank"});
 
 	}
 
@@ -241,54 +299,8 @@ public class DBTest {
 		// System.out.println(insuffFunds.getInsufficientFundsPenalty());
 	}
 
-	/*
-	 * This method isn't on the required list May be needed for the
-	 * getAllAccountsTest() method
-	 */
-	@Test
-	public void addAccountWizardTest(String newAccount) {
-		// Copy and paste AddCustomerWizard.	
-		String AccountId = "Enter Account ID: ";
-			
-			Bank accountWiz = new Bank(newAccount);
-			
-			ByteArrayInputStream inputAccount = new ByteArrayInputStream(
-					newAccount.getBytes());
-			
-			System.setIn(inputAccount);
-	}
-
-	/*
-	 * test From account class that creates accounts 
-	 * test all accounts are up to date 
-	 * test that list is sorted 
-	 */
 	@Test
 	public void getAllAccountsTest() {
-
-	}
-
-	/*
-	 * addCustomerWizardTest isn't required May be used for the
-	 * getAllCustomerTest() method
-	 */
-	@Test
-	public void addCustomerWizardTest() {
-
-		// I attempted to make this work as a string reader
-		// Not sure if thats the way we wont to go, but its
-		// here for whoever wants to try
-
-		String newCustomer = "Enter Customer Name: ";
-
-		Bank customerWiz = new Bank(newCustomer);
-
-		ByteArrayInputStream inputCustomer = new ByteArrayInputStream(
-				newCustomer.getBytes());
-
-		System.setIn(inputCustomer);
-
-		// assertEquals("Enter Customer Name: ", Bank.addCustomerWizard() );
 
 	}
 
@@ -303,29 +315,13 @@ public class DBTest {
 		String firstName = "FirstName";
 		String custID = "123";
 
-		
-		
-		/*I believe this section is not required. 
-		 * 
-		 * 
-		// Setting
-		String getCustName = (lastName + firstName);
-		String getCustID = (custID);
-
-		String customerInfo = (getCustName + getCustID);
-		*/
-		
-		
-		
-
 		// Create Object
 		Bank addCustomerName = new Bank(custID);
-				
 
 		// Test Requirement
-		//call the object with the LastName and First Name String variables
-		//to receive the customer's ID returned by the method. 
-		//then tests for matching ID's
+		// call the object with the LastName and First Name String variables
+		// to receive the customer's ID returned by the method.
+		// then tests for matching ID's
 		Assert.assertTrue(addCustomerName.addCustomer(lastName, firstName)
 				.equals(custID));
 
@@ -339,69 +335,67 @@ public class DBTest {
 	@Test
 	public void getAllCustomersTest() {
 
-		//creates dummy SortedSet
+		// creates dummy SortedSet
 		SortedSet<String> sortedTestVar = new TreeSet<>();
 		sortedTestVar.add("ID1: 123");
 		sortedTestVar.add("ID2: 456");
 		sortedTestVar.add("ID2: 789");
-		
-		//creates SortedSet to hold information returned by the method
+
+		// creates SortedSet to hold information returned by the method
 		SortedSet<Customer> returnSortedSet = new TreeSet<>();
-		
-		//fake ID used to create object
+
+		// fake ID used to create object
 		String fakeID = "";
-		
+
 		Bank getAllTestObj = new Bank(fakeID);
-		
-		//calls the method and stores returned values
+
+		// calls the method and stores returned values
 		returnSortedSet = getAllTestObj.getAllCustomers();
-		
-		//compares dummy info against information returned by the method
+
+		// compares dummy info against information returned by the method
 		Assert.assertEquals(returnSortedSet, sortedTestVar);
-		
-		
+
 	}
 
 	/*
-	 * tests that the getCustID variable equals the 
-	 * client object returned by the method
+	 * tests that the getCustID variable equals the client object returned by
+	 * the method
 	 */
-	@Test
-	public void getCustomerTest() {
-		
-		String getCustID = "12345";
-		
-		Bank getCustObj = new Bank(getCustID);
-		
-		Object testResult = getCustObj.getCustomer(getCustID);
-		
-		Assert.assertEquals(testResult, getCustID);
-
-	}
-
 	/*
-	 * Need assistance on List - Peter 4/9/19
+	 * @Test public void getCustomerTest() {
+	 * 
+	 * String getCustID = "12345";
+	 * 
+	 * Bank getCustObj = new Bank(getCustID);
+	 * 
+	 * Object testResult = getCustObj.getCustomer(getCustID);
+	 * 
+	 * Assert.assertEquals(testResult, getCustID);
+	 * 
+	 * }
+	 * 
+	 * /* Need assistance on List - Peter 4/9/19
 	 */
 	@Test
 	public void listGetCustomerTest() {
-//		Object[] getCustomerId;
-//		// Initialize variable
-//		String CustomerList = null;
-//		
-//		// Create object list
-//		Bank getCustomers = new Bank(CustomerList);
-//		
-//		//Adding customers to list
-//		Customer customer1 = new Customer("LastName","FirstName", "1");
-//        Customer customer2 = new Customer("LastName","FirstName", "2");
-//        Customer customer3 = new Customer("LastName","FirstName", "3");
-//        getCustomers.add(customer1);
-//        getCustomers.add(customer2);
-//        getCustomers.add(customer3);
-//        
-//        //Test
-//        Assert.assertEquals(null, null, getCustomerId);
-//
+		// Object[] getCustomerId;
+		// // Initialize variable
+		// String CustomerList = null;
+		//
+		// // Create object list
+		// Bank getCustomers = new Bank(CustomerList);
+		//
+		// //Adding customers to list
+		// Customer customer1 = new Customer("LastName","FirstName", "1");
+		// Customer customer2 = new Customer("LastName","FirstName", "2");
+		// Customer customer3 = new Customer("LastName","FirstName", "3");
+		// getCustomers.add(customer1);
+		// getCustomers.add(customer2);
+		// getCustomers.add(customer3);
+		//
+		// //Test
+		// Assert.assertEquals(null, null, getCustomerId);
+		//
 
 	}
 
@@ -416,77 +410,62 @@ public class DBTest {
 	/*
 	 * START OF CUSTOMER CLASS TESTS
 	 */
-	
+
 	/*
 	 * Customer
 	 * 
-	 * test bank that owns the account 
-	 * test last name to verify
-	 * test first to verify
+	 * test bank that owns the account test last name to verify test first to
+	 * verify
 	 */
-	
-
 
 	/*
-	 * ytdFees
-	 * test total fees. Create fees for a year and test 
+	 * ytdFees test total fees. Create fees for a year and test
 	 */
-	
+
 	/*
-	 * ytdInterest
-	 * test total interest for the year
+	 * ytdInterest test total interest for the year
 	 */
-	
+
 	/*
-	 * savingsAccount addSavingsAccount
-	 * test balance 
-	 * test that the account id entered is verified 
-	 * 
+	 * savingsAccount addSavingsAccount test balance test that the account id
+	 * entered is verified
 	 */
-	
+
 	/*
-	 * removeAccount
-	 * test to remove account
-	 * test that the id no longer exists
+	 * removeAccount test to remove account test that the id no longer exists
 	 * test if id exists
 	 */
-	
+
 	/*
-	 * Account getAccount
-	 * test if account ID exists 
-	 * if account doesn't exist return null
+	 * Account getAccount test if account ID exists if account doesn't exist
+	 * return null
 	 */
-	
+
 	/*
 	 * START OF SAVINGSACCOUNT CLASS TESTS
 	 */
-	
+
 	/*
-	 * SavingsAccount
-	 * test that account ID exists
-	 * test for balance
-	 * test that there is a description created by owner
-	 * 
+	 * SavingsAccount test that account ID exists test for balance test that
+	 * there is a description created by owner
 	 */
-	
+
 	/*
-	 * addInterestTransaction
-	 * create a rate of interest 
-	 * test that the rate is applied monthly
-	 * 
+	 * addInterestTransaction create a rate of interest test that the rate is
+	 * applied monthly
 	 */
-	
+
 	/*
 	 * START OF TRANSACTION TYPE CLASS TESTS
 	 */
 
 	/*
-	 * Transaction(TransactionType type, double amount, String description)
-	 * test what type of transaction (withdrawal, transfer, deposit)
-	 * test how much the transaction is worth
-	 * test there is a description of the transaction (was it a check, who did the transaction... ect)
+	 * Transaction(TransactionType type, double amount, String description) test
+	 * what type of transaction (withdrawal, transfer, deposit) test how much
+	 * the transaction is worth test there is a description of the transaction
+	 * (was it a check, who did the transaction... ect)
 	 */
-	
+
 	/*
 	 * Since these enums are empty, I have added test data which would
 	 * correspond to the enum type. The test below tests all enums within the
@@ -501,5 +480,18 @@ public class DBTest {
 		Assert.assertEquals("Fee", TransactionType.FEE.name());
 		Assert.assertEquals("Penalty", TransactionType.PENALTY.name());
 		Assert.assertEquals("Adjustment", TransactionType.ADJUSTMENT.name());
+	}
+
+	// Don't touch.
+	@Override
+	public void deposit(double amount) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void withdraw(double amount) {
+		// TODO Auto-generated method stub
+
 	}
 }
