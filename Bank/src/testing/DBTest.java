@@ -66,7 +66,6 @@
  * 
  * ---CUSTOMER CLASS---
  * Customer.Customer();
- * Customer.getCustomerId();
  * Customer.ytdFees();
  * Customer.ytdInterest();
  * Customer SavingsAccount addSavingsAccount();
@@ -92,6 +91,15 @@
  * 
  *
  * ------------------------------------------------------------
+ * 
+ * As on 4/9/2019
+ * Andres is finishing what is left of Bank class and Transaction class
+ * 
+ * Josh is taking SavingsAccount and working on methods in Account and Customer
+ * 
+ * Mike is taking Account
+ * 
+ * Peter is taking Customer
  */
 
 package testing;
@@ -108,6 +116,68 @@ import banking.*;
 
 public class DBTest {
 
+	/*
+	 * START OF ACCOUNT CLASS TESTS
+	 */
+	
+	/*
+	 * Account()
+	 * check for customer specific ID
+	 * check for current balance
+	 * produce a description of what's in ID and current balance
+	 */
+	public void accountTest() {
+		
+	}
+	
+	/*
+	 * abstract void deposit (double amount)
+	 * amount The amount to deposit
+	 */
+	public void depositTest() {
+		
+	}
+	
+	/*
+	 * abstract void withdrawal (double amount)
+	 * what amount is being withdrawn 
+	 * if there isn't enough throw something back
+	 */
+	public void withdrawalTest() {
+		
+	}
+	
+	/*
+	 * static void transfer (Account fromAccount, Account toAccount,
+	 * 	double amount)
+	 * how much is about to be transfered
+	 * for two Account IDs 
+	 * check if money has been transfered (you can check to see if balances have changed)
+	 */
+	
+	public void transferTest() {
+		
+	}
+	
+	/*
+	 * List<Transaction> getTransactions
+	 * test to see if the list contains any transaction
+	 * test to see if items are added to the list
+	 */
+	public void getTransactionsTest() {
+		
+	}
+	
+	/*
+	 * Transaction getTransaction (int transactionId)
+	 * check to see if transaction exists
+	 * 
+	 */
+	
+	public void TransactiongetTransaction() {
+		
+	}
+	
 	/*
 	 * START OF BANK CLASS TESTS
 	 */
@@ -189,7 +259,9 @@ public class DBTest {
 	}
 
 	/*
-	 * 
+	 * test From account class that creates accounts 
+	 * test all accounts are up to date 
+	 * test that list is sorted 
 	 */
 	@Test
 	public void getAllAccountsTest() {
@@ -268,10 +340,10 @@ public class DBTest {
 	public void getAllCustomersTest() {
 
 		//creates dummy SortedSet
-		SortedSet<String> SortedTestVar = new TreeSet<>();
-		SortedTestVar.add("ID1: 123");
-		SortedTestVar.add("ID2: 456");
-		SortedTestVar.add("ID2: 789");
+		SortedSet<String> sortedTestVar = new TreeSet<>();
+		sortedTestVar.add("ID1: 123");
+		sortedTestVar.add("ID2: 456");
+		sortedTestVar.add("ID2: 789");
 		
 		//creates SortedSet to hold information returned by the method
 		SortedSet<Customer> returnSortedSet = new TreeSet<>();
@@ -285,7 +357,7 @@ public class DBTest {
 		returnSortedSet = getAllTestObj.getAllCustomers();
 		
 		//compares dummy info against information returned by the method
-		Assert.assertEquals(returnSortedSet, returnSortedSet);
+		Assert.assertEquals(returnSortedSet, sortedTestVar);
 		
 		
 	}
@@ -344,11 +416,77 @@ public class DBTest {
 	/*
 	 * START OF CUSTOMER CLASS TESTS
 	 */
+	
+	/*
+	 * Customer
+	 * 
+	 * test bank that owns the account 
+	 * test last name to verify
+	 * test first to verify
+	 */
+	
 
+
+	/*
+	 * ytdFees
+	 * test total fees. Create fees for a year and test 
+	 */
+	
+	/*
+	 * ytdInterest
+	 * test total interest for the year
+	 */
+	
+	/*
+	 * savingsAccount addSavingsAccount
+	 * test balance 
+	 * test that the account id entered is verified 
+	 * 
+	 */
+	
+	/*
+	 * removeAccount
+	 * test to remove account
+	 * test that the id no longer exists
+	 * test if id exists
+	 */
+	
+	/*
+	 * Account getAccount
+	 * test if account ID exists 
+	 * if account doesn't exist return null
+	 */
+	
+	/*
+	 * START OF SAVINGSACCOUNT CLASS TESTS
+	 */
+	
+	/*
+	 * SavingsAccount
+	 * test that account ID exists
+	 * test for balance
+	 * test that there is a description created by owner
+	 * 
+	 */
+	
+	/*
+	 * addInterestTransaction
+	 * create a rate of interest 
+	 * test that the rate is applied monthly
+	 * 
+	 */
+	
 	/*
 	 * START OF TRANSACTION TYPE CLASS TESTS
 	 */
 
+	/*
+	 * Transaction(TransactionType type, double amount, String description)
+	 * test what type of transaction (withdrawal, transfer, deposit)
+	 * test how much the transaction is worth
+	 * test there is a description of the transaction (was it a check, who did the transaction... ect)
+	 */
+	
 	/*
 	 * Since these enums are empty, I have added test data which would
 	 * correspond to the enum type. The test below tests all enums within the
