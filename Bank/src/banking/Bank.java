@@ -3,6 +3,8 @@ package banking;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import testing.CustomerTest;
+
 /**
  * @author wpollock
  * 
@@ -149,4 +151,23 @@ public class Bank {
 	public List<Account> getCustomersAccounts(String customerId) {
 		return null; // Stub
 	}
-}
+
+	public static void getAccount(CustomerTest cA1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void removeAccount(CustomerTest cA1) {
+		
+	}
+
+	
+		
+	}
+
+	
+
+	
+
+	
+
