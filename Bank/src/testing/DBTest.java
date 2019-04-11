@@ -78,7 +78,7 @@
  * * Add later
  * 
  * ---SAVINGS ACCOUNT CLASS---
- * SavingsAccount.SavingsAccount();
+ * SavingsAccount.SavingsAccount(); Test done by:- Michael Tarallo and Joshua Ventura
  * SavingsAccount.addInterest();
  * 
  * ---SAVINGS ACCOUNT CLASS OPTIONAL---

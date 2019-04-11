@@ -46,7 +46,7 @@ public class AccountTest extends Account {
 			Date date = new Date();
 			System.out.println(dateFormat.format(date));
 
-			// Given
+			// Given variables
 			String customerID = "CustID-420";
 			String accountID = "AccountID-123";
 			String localDateTime = dateFormat.format(date);
@@ -65,7 +65,8 @@ public class AccountTest extends Account {
 			AccountTest currentBalance = new AccountTest();
 			AccountTest acc = new AccountTest();
 
-			// Requirements
+			// Testing 
+			
 			Assert.assertTrue(customerId.getCustomerId().equals(customerID));
 
 			Assert.assertTrue(accountId.getAccountId().equals(accountID));
