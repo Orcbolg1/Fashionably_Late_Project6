@@ -4,13 +4,18 @@ import static org.junit.Assert.*;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
 import banking.Account;
 import banking.Customer;
+import banking.Transaction;
+import banking.TransactionType;
 
 
 public class AccountTest extends Account {
@@ -23,7 +28,7 @@ public class AccountTest extends Account {
 			super(cust, initBal, accDesc);
 
 		}
-
+		
 		/*
 		 * START OF ACCOUNT CLASS TESTS
 		 */
@@ -61,7 +66,7 @@ public class AccountTest extends Account {
 			AccountTest acc = new AccountTest();
 
 			// Requirements
-			Assert.assertTrue(customerId.equals(customerID));
+			Assert.assertTrue(customerId.getCustomerId().equals(customerID));
 
 			Assert.assertTrue(accountId.getAccountId().equals(accountID));
 
@@ -79,6 +84,7 @@ public class AccountTest extends Account {
 		 */
 		public void depositTest() {
 
+			AccountTest theDeposit = new AccountTest();
 		}
 
 		/*
@@ -97,29 +103,36 @@ public class AccountTest extends Account {
 
 		@Test
 		public void transferTest() {
-			// Account Inbound - String
-			// Account Outbound - String
-			// Amount Transferred - Double
 
-			// Given
-			String accountOUT = "420";
-			String accountIN = "123";
+	        // Given
+	        String accountOUT = "420";
+	        String accountIN = "123";
+	        double currentBalance = 0.00;
+	        double transferredAmount = 10.00;
 
-			double transferred = 1000000;
-			double x = 0.0;
+	        // Creating objects
+	        AccountTest accOUT = new AccountTest();
+	        AccountTest accIN = new AccountTest();
+	        
+	        AccountTest balSet = new AccountTest();
+	        balSet.balance = currentBalance;
 
-			// Creating objects
-			AccountTest accOUT = new AccountTest();
-			AccountTest accIN = new AccountTest();
-			// DBTest amount1 = new DBTest();
 
-			Assert.assertTrue(accOUT.customer.getCustomerAccounts().equals(
-					accountOUT));
-			Assert.assertTrue(accIN.customer.getCustomerAccounts()
-					.equals(accountIN));
+	        // Starting balance of accIN and accOUT
+	        Assert.assertTrue(accIN.balance == (currentBalance));
+	        transferredAmount = accOUT.balance;
+	        Assert.assertTrue(accOUT.getBalance() == (transferredAmount));	
 
-			// Assert.assertTrue(amount1.withdraw()==(transferred));
-			// Assert.assertTrue(amount1.deposit()==(transferred));
+	        
+	        // Tests that balances changed from transfer
+	        Assert.assertTrue(accIN.balance == (transferredAmount));
+	        Assert.assertTrue(accOUT.balance == (currentBalance));
+
+	        // Tests that accounts exist in list
+	        Assert.assertTrue(accOUT.customer.getCustomerAccounts().equals(
+	                accountOUT));
+	        Assert.assertTrue(accIN.customer.getCustomerAccounts()
+	                .equals(accountIN));
 
 		}
 
@@ -127,8 +140,15 @@ public class AccountTest extends Account {
 		 * List<Transaction> getTransactions test to see if the list contains any
 		 * transaction test to see if items are added to the list
 		 */
+		@Test
 		public void getTransactionsTest() {
-
+			
+			List<Transaction> transactionList = new ArrayList<>();
+			
+			AccountTest addTransaction = new AccountTest();
+			
+			Assert.assertTrue(addTransaction.getTransactions().equals(transactionList));
+			
 		}
 
 		/*
@@ -136,20 +156,18 @@ public class AccountTest extends Account {
 		 * transaction exists
 		 */
 
-		public void TransactiongetTransaction() {
-
+		@Test
+		public void getTransaction() {
+			int transactionID = 1;
+			
+			AccountTest transactionId = new AccountTest();
+			
+			System.out.println(transactionID);
+			
+			Assert.assertTrue(transactionId.getTransaction(transactionID).equals(transactionID));
 		}
 		
 		
-
-
-
-		
-		
-
-
-
-
 
 
 		// Don't touch.

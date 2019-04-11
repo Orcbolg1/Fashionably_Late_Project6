@@ -43,11 +43,11 @@
  * 
  * ---ACCOUNT CLASS---
  * Account.Account(); Test done by:- Joshua Ventura & Michael Tarallo
- * Account.deposit();
- * Account.withdrawl();
- * Account.transfer(); Test started by:- Joshua Ventura & Michael Tarallo
- * Account.List<Transaction> getTransactions();
- * Account.Transaction getTransaction();
+ * Account.deposit(); Untestable? no body, abstract
+ * Account.withdrawl(); Untestable? no body, abstract
+ * Account.transfer(); Test done by:- Joshua Ventura & Michael Tarallo
+ * Account.List<Transaction> getTransactions(); Test done by:- Joshua Ventura & Michael Tarallo
+ * Account.Transaction getTransaction(); Test done by:- Joshua Ventura & Michael Tarallo
  * 
  * ---ACCOUNT CLASS OPTIONAL---
  * * Add later
