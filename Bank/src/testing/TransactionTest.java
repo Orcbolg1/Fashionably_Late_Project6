@@ -2,7 +2,12 @@ package testing;
 
 import static org.junit.Assert.*;
 
+import java.time.LocalDateTime;
+
+import org.junit.Assert;
 import org.junit.Test;
+
+import banking.Transaction;
 
 public class TransactionTest {
 
@@ -15,12 +20,42 @@ public class TransactionTest {
 	 * what type of transaction (withdrawal, transfer, deposit) test how much
 	 * the transaction is worth test there is a description of the transaction
 	 * (was it a check, who did the transaction... ect)
+	 * 
+	 * 
+	 * 
+	this.id = 1;
+	this.type = null;
+	this.amount = 0.00;
+	this.description = "";
+	this.timestamp = LocalDateTime.now();
 	 */
+	
 
-	/*
-	 * Since these enums are empty, I have added test data which would
-	 * correspond to the enum type. The test below tests all enums within the
-	 * method.
-	 */
+	public void transactionTypeTest() {
+		
+		// test transaction types
+		String deposit = "DepositType";
+		String withdrawal = "WithdrawalType";
+		String transfer = "TransferType";
+		String typeList = deposit + withdrawal + transfer;
+		// test id 
+		int id = 1;
+		// test amount of transaction
+		double transactionAmount = 10;
+		// test description
+		String description = "Transaction One";
+		
+		Transaction transactionType = new Transaction(null, 0, null);
+		
+		// consolidated test types into one test 
+		Assert.assertTrue(transactionType.getType().equals(typeList));
+		// test transaction 1d
+		Assert.assertTrue(transactionType.getId() == (id));
+		// test amount
+		Assert.assertTrue(transactionType.getAmount() == (transactionAmount));
+		// test description of transaction
+		Assert.assertTrue(transactionType.getDescription().equals(description));
+		
+	}
 
 }

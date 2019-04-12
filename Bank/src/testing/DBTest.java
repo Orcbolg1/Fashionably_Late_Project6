@@ -79,14 +79,14 @@
  * 
  * ---SAVINGS ACCOUNT CLASS---
  * SavingsAccount.SavingsAccount(); Test done by:- Michael Tarallo and Joshua Ventura
- * SavingsAccount.addInterest();
+ * SavingsAccount.addInterest(); Test done by:- Michael Tarallo and Joshua Ventura
  * 
  * ---SAVINGS ACCOUNT CLASS OPTIONAL---
  * * Add later
  * 
  * 
  * ---TRANSACTION CLASS---
- * Transaction.Transaction();
+ * Transaction.Transaction(); Test done by:- Joshua Ventura
  * 
  * ---TRASACTION TYPE CLASS---
  * TransactionType; Test done by:- Joshua Ventura 

@@ -5,13 +5,15 @@ import static org.junit.Assert.*;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.Comparator;
+
+import org.junit.Assert;
 import org.junit.Test;
 
 import banking.Account;
 import banking.Bank;
 import banking.Customer;
 import banking.SavingsAccount;
-import junit.framework.Assert;
+
 
 public class CustomerTest extends Customer {
 	
