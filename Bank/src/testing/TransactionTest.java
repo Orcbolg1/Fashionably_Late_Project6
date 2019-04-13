@@ -1,19 +1,10 @@
 package testing;
 
-import static org.junit.Assert.*;
-
-import java.time.LocalDateTime;
-
 import org.junit.Assert;
-import org.junit.Test;
 
 import banking.Transaction;
 
 public class TransactionTest {
-
-	/*
-	 * START OF TRANSACTION TYPE CLASS TESTS
-	 */
 
 	/*
 	 * Transaction(TransactionType type, double amount, String description) test
@@ -23,31 +14,27 @@ public class TransactionTest {
 	 * 
 	 * 
 	 * 
-	this.id = 1;
-	this.type = null;
-	this.amount = 0.00;
-	this.description = "";
-	this.timestamp = LocalDateTime.now();
+	 * this.id = 1; this.type = null; this.amount = 0.00; this.description = "";
+	 * this.timestamp = LocalDateTime.now();
 	 */
-	
 
 	public void transactionTypeTest() {
-		
+
 		// test transaction types
 		String deposit = "DepositType";
 		String withdrawal = "WithdrawalType";
 		String transfer = "TransferType";
 		String typeList = deposit + withdrawal + transfer;
-		// test id 
+		// test id
 		int id = 1;
 		// test amount of transaction
 		double transactionAmount = 10;
 		// test description
 		String description = "Transaction One";
-		
+
 		Transaction transactionType = new Transaction(null, 0, null);
-		
-		// consolidated test types into one test 
+
+		// consolidated test types into one test
 		Assert.assertTrue(transactionType.getType().equals(typeList));
 		// test transaction 1d
 		Assert.assertTrue(transactionType.getId() == (id));
@@ -55,7 +42,7 @@ public class TransactionTest {
 		Assert.assertTrue(transactionType.getAmount() == (transactionAmount));
 		// test description of transaction
 		Assert.assertTrue(transactionType.getDescription().equals(description));
-		
+
 	}
 
 }
